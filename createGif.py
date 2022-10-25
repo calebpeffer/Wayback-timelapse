@@ -1,15 +1,9 @@
 
-# import datetime
 import glob
 from PIL import Image, ImageFont, ImageDraw
 
 
-"""
-from PIL import Image, 
 
-my_image = Image.open("image.jpg")
-
-"""
 
 def readInMetaDataFile():
     with open("imageInfo.txt", "r") as f:
@@ -40,17 +34,10 @@ def addTextToImage(image, text, font, color):
 
 
     image_editable.rounded_rectangle((padding, height - fontsize - padding - 4, 316, height - fontsize + 58 - padding - 4), fill=(108,40,216), width=5, radius=10)
-    
-    # get the height of the image
-    # height = image.size[1]
 
     
     image_editable.text((15 + padding , height - fontsize - padding - 4), text, color, font=title_font)
 
-    
-
-    
-    # convert ImageDraw object back to an Image object
 
     return image_editable._image
     
@@ -71,10 +58,6 @@ def make_gif(frame_folder):
     #add text to each image in the frames list
     for i in range(len(frames)):
         frames[i] = addTextToImage(frames[i], metaMap[str(getFileIndexFromName(frames[i].filename))][1], "font", (252,252,252))
-
-        # try:
-        # except KeyError:
-        #     pass
 
     
     frame_one = frames[0]

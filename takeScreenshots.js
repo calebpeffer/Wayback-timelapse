@@ -59,17 +59,12 @@ async function run() {
 
   });
 
-  // await page.goto('https://web.archive.org/web/20090204145417/https://www.airbnb.com/', {
-  //   waitUntil: "domcontentloaded",
-  // });
-  // await page.waitForXPath(`//*[@id="wm-ipp-base"]`);
-
 
   let urls = await getURLs('https://www.airbnb.com/', 150, 2007, 2022, 'timestamp:6');
   console.log("urls", urls);
+  
   let count = 0;
   for(url of urls){
-    // await sleep(20000);
     try{
       await takeScreenshotOfPage(url, browser, page, count, "10");
 
@@ -79,11 +74,9 @@ async function run() {
 
       console.log("timestamp", timestamp);
 
-      
       ///Save Url and index to a new line in imageInfo.txt
       fs.appendFileSync('imageInfo.txt', `${url} ${count} ${timestamp}` + "\n");
-      
-
+    
       count++;
     } catch(e){
       console.log(e);
@@ -95,5 +88,3 @@ async function run() {
 }
 
 run();
-
-// console.log(axiç
