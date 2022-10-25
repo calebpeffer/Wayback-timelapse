@@ -42,7 +42,7 @@ def addTextToImage(image, text, font, color):
     return image_editable._image
     
 
-def make_gif(frame_folder):
+def make_gif(frame_folder, output_file):
     framePath = f"{frame_folder}/*.png"
     frames = [Image.open(image) for image in glob.glob(framePath)]
 
@@ -61,11 +61,15 @@ def make_gif(frame_folder):
 
     
     frame_one = frames[0]
-    frame_one.save("my_awesome.gif", format="GIF", append_images=frames,
+    frame_one.save(output_file, format="GIF", append_images=frames,
                save_all=True, duration=500, loop=0)
     
 if __name__ == "__main__":
-    make_gif("screenshots")
+
+    OUTPUT_FILE = "output.gif" 
+    INPUT_FOLDER = "screenshots" # The folder containing the screenshots created by takeScreenshots.js
+
+    make_gif(INPUT_FOLDER, OUTPUT_FILE)
 
         
 
