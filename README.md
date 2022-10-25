@@ -1,2 +1,2 @@
 # Wayback-timelapse
-Automatically Create GIfs of a website's history
+Automatically create GIFS of a website's history
