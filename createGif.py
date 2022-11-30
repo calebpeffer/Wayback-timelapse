@@ -1,12 +1,10 @@
 
 import glob
 from PIL import Image, ImageFont, ImageDraw
+import sys
 
-
-
-
-def readInMetaDataFile():
-    with open("imageInfo.txt", "r") as f:
+def readInMetaDataFile(metaDataFileName):
+    with open(metaDataFileName, "r") as f:
 
         # read each line of in the file
         lines = f.readlines()
@@ -50,7 +48,7 @@ def make_gif(frame_folder, output_file):
 
     frames.sort(key=lambda x: getFileIndexFromName(x.filename))
 
-    metaMap = readInMetaDataFile()
+    metaMap = readInMetaDataFile(f"{frame_folder}/imageInfo-{frame_folder}.txt")
     for key, value in metaMap.items():
         # replace the second element in the value list with the parsed timestamp
         value[1] = parseTimestamp(value[1])
@@ -62,12 +60,18 @@ def make_gif(frame_folder, output_file):
     
     frame_one = frames[0]
     frame_one.save(output_file, format="GIF", append_images=frames,
-               save_all=True, duration=500, loop=0)
+               save_all=True, duration=300, loop=0)
     
 if __name__ == "__main__":
 
-    OUTPUT_FILE = "output.gif" 
-    INPUT_FOLDER = "screenshots" # The folder containing the screenshots created by takeScreenshots.js
+    print(sys.argv[1])
+    # Read in first commandline argument
+    frame_folder = sys.argv[1]
+    
+
+    # OUTPUT_FILE = "output-xmin.gif" 
+    OUTPUT_FILE = f"{frame_folder}.gif"
+    INPUT_FOLDER = f"{frame_folder}" # The folder containing the screenshots created by takeScreenshots.js
 
     make_gif(INPUT_FOLDER, OUTPUT_FILE)
 

@@ -106,3 +106,8 @@ dist
 
 
 screenshots/
+
+# Ignore any folder that starts with the text screenshots
+screenshots*
+
+*.gif
