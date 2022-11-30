@@ -110,4 +110,7 @@ screenshots/
 # Ignore any folder that starts with the text screenshots
 screenshots*
 
+
+# ignore any gif files
 *.gif
+
