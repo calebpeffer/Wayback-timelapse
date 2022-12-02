@@ -114,3 +114,5 @@ screenshots*
 # ignore any gif files
 *.gif
 
+
+.env

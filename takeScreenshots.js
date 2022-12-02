@@ -45,7 +45,7 @@ async function run(url, outputFileName) {
   /// Set these variables:
   // const url = url;
   const maxNumberOfCaptures = 300;
-  const startYear = 2010;
+  const startYear = 2000;
   const endYear = 2022;
   const screenshotFolderName = `screenshots-${outputFileName}`;
   
@@ -123,8 +123,6 @@ async function run(url, outputFileName) {
       ///Split URl around / and take the 4th element
       let timestamp = url.split("/")[4]; 
 
-      
-      
       ///Save Url and index to a new line in imageInfo.txt
       fs.appendFileSync(metaDataPath, `${url} ${count} ${timestamp}` + "\n");
     
